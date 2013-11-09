@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"ManateeBans"
+	"version"			"SVN"
+	"up_date"			"00/00/00"
+	"author_name"			"manatails"
+	"author_email"			"manatails@mananet.net"
+	"author_url"			"http://www.mananet.net/"
+	"info"				"manatails' user management system"
+	"override"			"0"
+}

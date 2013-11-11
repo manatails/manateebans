@@ -1,14 +1,14 @@
 --[[
-	ManateeBans data processing library
-	
+    ManateeBans data processing library
+    
 ]]--
 
 function escapeCSV (s)
     if string.find(s, '[,"]') then
-		s = '"' .. string.gsub(s, '"', '""') .. '"'
+        s = '"' .. string.gsub(s, '"', '""') .. '"'
     end
     
-	return s
+    return s
 end
 
 function fromCSV (s)
@@ -19,8 +19,8 @@ function fromCSV (s)
     repeat
         -- next field is quoted? (start with `"'?)
         if string.find(s, '^"', fieldstart) then
-			local a, c
-			local i  = fieldstart
+            local a, c
+            local i  = fieldstart
             repeat
                 -- find closing quote
                 a, i, c = string.find(s, '"("?)', i+1)
@@ -36,14 +36,14 @@ function fromCSV (s)
         end
     until fieldstart > string.len(s)
     
-	return t
+    return t
 end
 
  -- Convert from table to CSV string
 function toCSV (tt)
     local s = ""
     
-	for _,p in pairs(tt) do
+    for _,p in pairs(tt) do
         s = s .. "," .. escapeCSV(p)
     end
      
@@ -61,20 +61,20 @@ function table.contains(table, element)
 end
 
 function isIPAddress(ip)
-	if not ip then return false end
-	
-	local a,b,c,d=ip:match("^(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)$")
-	
-	a=tonumber(a)
-	b=tonumber(b)
-	c=tonumber(c)
-	d=tonumber(d)
-	
-	if not a or not b or not c or not d then return false end
-	if a<0 or 255<a then return false end
-	if b<0 or 255<b then return false end
-	if c<0 or 255<c then return false end
-	if d<0 or 255<d then return false end
+    if not ip then return false end
+    
+    local a,b,c,d=ip:match("^(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)$")
+    
+    a=tonumber(a)
+    b=tonumber(b)
+    c=tonumber(c)
+    d=tonumber(d)
+    
+    if not a or not b or not c or not d then return false end
+    if a<0 or 255<a then return false end
+    if b<0 or 255<b then return false end
+    if c<0 or 255<c then return false end
+    if d<0 or 255<d then return false end
 
-	return true
+    return true
 end
